@@ -6,10 +6,10 @@
 #include <pow.h>
 
 #include <arith_uint256.h>
+#include <util.h>
 #include <chain.h>
 #include <primitives/block.h>
 #include <uint256.h>
-
 unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader *pblock, const Consensus::Params& params)
 {
     assert(pindexLast != nullptr);
@@ -80,12 +80,33 @@ bool CheckProofOfWork(uint256 hash, unsigned int nBits, const Consensus::Params&
     bnTarget.SetCompact(nBits, &fNegative, &fOverflow);
 
     // Check range
-    if (fNegative || bnTarget == 0 || fOverflow || bnTarget > UintToArith256(params.powLimit))
-        return false;
+    if (fNegative || bnTarget == 0 || fOverflow || bnTarget > UintToArith256(params.powLimit)){
+          if(fNegative){
+            LogPrintf("error check fNegative\n");
+          }
+          if(bnTarget == 0){
+            LogPrintf("error check bnTarget\n");
+          }
+          if(fOverflow){
+            LogPrintf("error check fOverflow\n");
+          }
+          if(bnTarget > UintToArith256(params.powLimit)){
+            //std::cout << bnTarget;
+            LogPrintf("error check UintToArith256 %s\n",bnTarget.GetHex());
+            LogPrintf("error check UintToArith256 %s\n", UintToArith256(params.powLimit).GetHex());
+          }
+
+          return false;
+    }
 
     // Check proof of work matches claimed amount
-    if (UintToArith256(hash) > bnTarget)
-        return false;
+    if (UintToArith256(hash) > bnTarget){
+        LogPrintf("Hash compare %s\n",UintToArith256(hash).GetHex());
+      LogPrintf("error check UintToArith256 %s\n",bnTarget.GetHex());
+
+        LogPrintf("error check claimed amount");
+          return false;
+    }
 
     return true;
 }
