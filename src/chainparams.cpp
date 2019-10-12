@@ -103,7 +103,8 @@ public:
 
         // The best chain should have at least this much work.
         //consensus.nMinimumChainWork = consensus.powLimit;
-        consensus.nMinimumChainWork = consensus.powLimit;
+
+        consensus.nMinimumChainWork = uint256S("0x00");
 
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256();
@@ -127,12 +128,12 @@ public:
         nDefaultPort = 8333;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1570917751, 0x00000002, 545259519, 1, 10 * COIN);
+        genesis = CreateGenesisBlock(1570921863, 2871061936, 0x1d00ffff, 1, 10 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         LogPrintf("blockhash: %s",consensus.hashGenesisBlock.GetHex());
         LogPrintf("hashMerkleRoot: %s",genesis.hashMerkleRoot.GetHex());
-        assert(consensus.hashGenesisBlock == uint256S("564e072ec6713f922348e73b08578db1de81fd9531420b305f0d8a277defa7e1"));
-        assert(genesis.hashMerkleRoot == uint256S("c6d065f1078e583ae5fdadd9d85b8761d2015760cdb19ecb32eb5e604da2f7b5"));
+        assert(consensus.hashGenesisBlock == uint256S("000000008592f80ace933c205d52789cbcf005509fbe0dad8fded3f79efd8b95"));
+        assert(genesis.hashMerkleRoot == uint256S("04298b4b95b5c131d2ee3b0f2a7c4b259eb2645b220de408d96f2aa3cd47876f"));
         // Note that of those which support the service bits prefix, most only support a subset of
         // possible options.
         // This is fine at runtime as we'll fall back to using them as a oneshot if they don't support the
@@ -248,12 +249,12 @@ public:
         nDefaultPort = 18333;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1570917751, 0x00000002, 545259519, 1, 10 * COIN);
+        genesis = CreateGenesisBlock(1570921863, 2871061936, 0x1d00ffff, 1, 10 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         LogPrintf("blockhash: %s",consensus.hashGenesisBlock.GetHex());
         LogPrintf("hashMerkleRoot: %s",genesis.hashMerkleRoot.GetHex());
-        assert(consensus.hashGenesisBlock == uint256S("564e072ec6713f922348e73b08578db1de81fd9531420b305f0d8a277defa7e1"));
-        assert(genesis.hashMerkleRoot == uint256S("c6d065f1078e583ae5fdadd9d85b8761d2015760cdb19ecb32eb5e604da2f7b5"));
+        assert(consensus.hashGenesisBlock == uint256S("000000008592f80ace933c205d52789cbcf005509fbe0dad8fded3f79efd8b95"));
+        assert(genesis.hashMerkleRoot == uint256S("04298b4b95b5c131d2ee3b0f2a7c4b259eb2645b220de408d96f2aa3cd47876f"));
         vFixedSeeds.clear();
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
@@ -345,13 +346,12 @@ public:
         nDefaultPort = 18444;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1570917751, 0x00000002, 545259519, 1, 10 * COIN);
+        genesis = CreateGenesisBlock(1570921863, 2871061936, 0x1d00ffff, 1, 10 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         LogPrintf("blockhash: %s",consensus.hashGenesisBlock.GetHex());
         LogPrintf("hashMerkleRoot: %s",genesis.hashMerkleRoot.GetHex());
-        assert(consensus.hashGenesisBlock == uint256S("564e072ec6713f922348e73b08578db1de81fd9531420b305f0d8a277defa7e1"));
-        assert(genesis.hashMerkleRoot == uint256S("c6d065f1078e583ae5fdadd9d85b8761d2015760cdb19ecb32eb5e604da2f7b5"));
-
+        assert(consensus.hashGenesisBlock == uint256S("000000008592f80ace933c205d52789cbcf005509fbe0dad8fded3f79efd8b95"));
+        assert(genesis.hashMerkleRoot == uint256S("04298b4b95b5c131d2ee3b0f2a7c4b259eb2645b220de408d96f2aa3cd47876f"));
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();      //!< Regtest mode doesn't have any DNS seeds.
 
