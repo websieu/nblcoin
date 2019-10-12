@@ -127,13 +127,12 @@ public:
         nDefaultPort = 8333;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1570913951, 0x00000002, 545259519, 1, 10 * COIN);
+        genesis = CreateGenesisBlock(1570917751, 0x00000002, 545259519, 1, 10 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         LogPrintf("blockhash: %s",consensus.hashGenesisBlock.GetHex());
         LogPrintf("hashMerkleRoot: %s",genesis.hashMerkleRoot.GetHex());
-        assert(consensus.hashGenesisBlock == uint256S("2a49e9ed9b2551f35b50612f3ce433b7286bfec2646a3bd8d674e95438c1cf25"));
+        assert(consensus.hashGenesisBlock == uint256S("564e072ec6713f922348e73b08578db1de81fd9531420b305f0d8a277defa7e1"));
         assert(genesis.hashMerkleRoot == uint256S("c6d065f1078e583ae5fdadd9d85b8761d2015760cdb19ecb32eb5e604da2f7b5"));
-
         // Note that of those which support the service bits prefix, most only support a subset of
         // possible options.
         // This is fine at runtime as we'll fall back to using them as a oneshot if they don't support the
@@ -249,13 +248,12 @@ public:
         nDefaultPort = 18333;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1570913951, 0x00000002, 545259519, 1, 10 * COIN);
+        genesis = CreateGenesisBlock(1570917751, 0x00000002, 545259519, 1, 10 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         LogPrintf("blockhash: %s",consensus.hashGenesisBlock.GetHex());
         LogPrintf("hashMerkleRoot: %s",genesis.hashMerkleRoot.GetHex());
-        assert(consensus.hashGenesisBlock == uint256S("2a49e9ed9b2551f35b50612f3ce433b7286bfec2646a3bd8d674e95438c1cf25"));
+        assert(consensus.hashGenesisBlock == uint256S("564e072ec6713f922348e73b08578db1de81fd9531420b305f0d8a277defa7e1"));
         assert(genesis.hashMerkleRoot == uint256S("c6d065f1078e583ae5fdadd9d85b8761d2015760cdb19ecb32eb5e604da2f7b5"));
-
         vFixedSeeds.clear();
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
@@ -347,11 +345,11 @@ public:
         nDefaultPort = 18444;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1570913951, 0x00000002, 545259519, 1, 10 * COIN);
+        genesis = CreateGenesisBlock(1570917751, 0x00000002, 545259519, 1, 10 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         LogPrintf("blockhash: %s",consensus.hashGenesisBlock.GetHex());
         LogPrintf("hashMerkleRoot: %s",genesis.hashMerkleRoot.GetHex());
-        assert(consensus.hashGenesisBlock == uint256S("2a49e9ed9b2551f35b50612f3ce433b7286bfec2646a3bd8d674e95438c1cf25"));
+        assert(consensus.hashGenesisBlock == uint256S("564e072ec6713f922348e73b08578db1de81fd9531420b305f0d8a277defa7e1"));
         assert(genesis.hashMerkleRoot == uint256S("c6d065f1078e583ae5fdadd9d85b8761d2015760cdb19ecb32eb5e604da2f7b5"));
 
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
