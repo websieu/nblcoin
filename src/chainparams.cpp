@@ -133,7 +133,7 @@ public:
         LogPrintf("blockhash: %s",consensus.hashGenesisBlock.GetHex());
         LogPrintf("hashMerkleRoot: %s",genesis.hashMerkleRoot.GetHex());
         assert(consensus.hashGenesisBlock == uint256S("000000008592f80ace933c205d52789cbcf005509fbe0dad8fded3f79efd8b95"));
-        assert(genesis.hashMerkleRoot == uint256S("04298b4b95b5c131d2ee3b0f2a7c4b259eb2645b220de408d96f2aa3cd47876f"));
+        assert(genesis.hashMerkleRoot == uint256S("6f8747cda32a6fd908e40d225b64b29e254b7c2a0f3beed231c1b5954b8b2904"));
         // Note that of those which support the service bits prefix, most only support a subset of
         // possible options.
         // This is fine at runtime as we'll fall back to using them as a oneshot if they don't support the
@@ -254,7 +254,7 @@ public:
         LogPrintf("blockhash: %s",consensus.hashGenesisBlock.GetHex());
         LogPrintf("hashMerkleRoot: %s",genesis.hashMerkleRoot.GetHex());
         assert(consensus.hashGenesisBlock == uint256S("000000008592f80ace933c205d52789cbcf005509fbe0dad8fded3f79efd8b95"));
-        assert(genesis.hashMerkleRoot == uint256S("04298b4b95b5c131d2ee3b0f2a7c4b259eb2645b220de408d96f2aa3cd47876f"));
+        assert(genesis.hashMerkleRoot == uint256S("6f8747cda32a6fd908e40d225b64b29e254b7c2a0f3beed231c1b5954b8b2904"));
         vFixedSeeds.clear();
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
@@ -351,7 +351,7 @@ public:
         LogPrintf("blockhash: %s",consensus.hashGenesisBlock.GetHex());
         LogPrintf("hashMerkleRoot: %s",genesis.hashMerkleRoot.GetHex());
         assert(consensus.hashGenesisBlock == uint256S("000000008592f80ace933c205d52789cbcf005509fbe0dad8fded3f79efd8b95"));
-        assert(genesis.hashMerkleRoot == uint256S("04298b4b95b5c131d2ee3b0f2a7c4b259eb2645b220de408d96f2aa3cd47876f"));
+        assert(genesis.hashMerkleRoot == uint256S("6f8747cda32a6fd908e40d225b64b29e254b7c2a0f3beed231c1b5954b8b2904"));
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();      //!< Regtest mode doesn't have any DNS seeds.
 
