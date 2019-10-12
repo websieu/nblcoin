@@ -20,7 +20,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
     txNew.nVersion = 1;
     txNew.vin.resize(1);
     txNew.vout.resize(1);
-    txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << std::vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
+    txNew.vin[0].scriptSig = CScript() << 545259519 << CScriptNum(4) << std::vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
     txNew.vout[0].nValue = genesisReward;
     txNew.vout[0].scriptPubKey = genesisOutputScript;
 
@@ -103,7 +103,7 @@ public:
 
         // The best chain should have at least this much work.
         //consensus.nMinimumChainWork = consensus.powLimit;
-        consensus.nMinimumChainWork = uint256S("0x00");
+        consensus.nMinimumChainWork = consensus.powLimit;
 
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256();
@@ -127,12 +127,12 @@ public:
         nDefaultPort = 8333;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1570906927, 2083236893, 0x1d00ffff, 1, 10 * COIN);
+        genesis = CreateGenesisBlock(1570913951, 0x00000002, 545259519, 1, 10 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         LogPrintf("blockhash: %s",consensus.hashGenesisBlock.GetHex());
         LogPrintf("hashMerkleRoot: %s",genesis.hashMerkleRoot.GetHex());
-        assert(consensus.hashGenesisBlock == uint256S("98d12d6ed823a50d908afbfc0b809a3072ecee47f6b15be00afe325dc1557b8f"));
-        assert(genesis.hashMerkleRoot == uint256S("6f8747cda32a6fd908e40d225b64b29e254b7c2a0f3beed231c1b5954b8b2904"));
+        assert(consensus.hashGenesisBlock == uint256S("2a49e9ed9b2551f35b50612f3ce433b7286bfec2646a3bd8d674e95438c1cf25"));
+        assert(genesis.hashMerkleRoot == uint256S("c6d065f1078e583ae5fdadd9d85b8761d2015760cdb19ecb32eb5e604da2f7b5"));
 
         // Note that of those which support the service bits prefix, most only support a subset of
         // possible options.
@@ -249,10 +249,12 @@ public:
         nDefaultPort = 18333;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1570906927, 2083236893, 0x1d00ffff, 1, 10 * COIN);
+        genesis = CreateGenesisBlock(1570913951, 0x00000002, 545259519, 1, 10 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("98d12d6ed823a50d908afbfc0b809a3072ecee47f6b15be00afe325dc1557b8f"));
-        assert(genesis.hashMerkleRoot == uint256S("6f8747cda32a6fd908e40d225b64b29e254b7c2a0f3beed231c1b5954b8b2904"));
+        LogPrintf("blockhash: %s",consensus.hashGenesisBlock.GetHex());
+        LogPrintf("hashMerkleRoot: %s",genesis.hashMerkleRoot.GetHex());
+        assert(consensus.hashGenesisBlock == uint256S("2a49e9ed9b2551f35b50612f3ce433b7286bfec2646a3bd8d674e95438c1cf25"));
+        assert(genesis.hashMerkleRoot == uint256S("c6d065f1078e583ae5fdadd9d85b8761d2015760cdb19ecb32eb5e604da2f7b5"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -345,12 +347,12 @@ public:
         nDefaultPort = 18444;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1570906927, 0x00000000, 545259519, 1, 10 * COIN);
+        genesis = CreateGenesisBlock(1570913951, 0x00000002, 545259519, 1, 10 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         LogPrintf("blockhash: %s",consensus.hashGenesisBlock.GetHex());
         LogPrintf("hashMerkleRoot: %s",genesis.hashMerkleRoot.GetHex());
-        assert(consensus.hashGenesisBlock == uint256S("98d12d6ed823a50d908afbfc0b809a3072ecee47f6b15be00afe325dc1557b8f"));
-        assert(genesis.hashMerkleRoot == uint256S("6f8747cda32a6fd908e40d225b64b29e254b7c2a0f3beed231c1b5954b8b2904"));
+        assert(consensus.hashGenesisBlock == uint256S("2a49e9ed9b2551f35b50612f3ce433b7286bfec2646a3bd8d674e95438c1cf25"));
+        assert(genesis.hashMerkleRoot == uint256S("c6d065f1078e583ae5fdadd9d85b8761d2015760cdb19ecb32eb5e604da2f7b5"));
 
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();      //!< Regtest mode doesn't have any DNS seeds.
