@@ -462,8 +462,11 @@ static bool IsCurrentForFeeEstimation()
     AssertLockHeld(cs_main);
     if (IsInitialBlockDownload())
         return false;
-    if (chainActive.Tip()->GetBlockTime() < (GetTime() - MAX_FEE_ESTIMATION_TIP_AGE))
-        return false;
+    if (chainActive.Tip()->GetBlockTime() < (GetTime() - MAX_FEE_ESTIMATION_TIP_AGE)){
+
+          return false;
+          LogPrintf("Error MAX_FEE_ESTIMATION_TIP_AGE\n");
+    }
     if (chainActive.Height() < pindexBestHeader->nHeight - 1)
         return false;
     return true;

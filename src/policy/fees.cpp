@@ -807,6 +807,7 @@ double CBlockPolicyEstimator::estimateConservativeFee(unsigned int doubleTarget,
             if (result) *result = tempResult;
         }
     }
+    LogPrintf("estimateConservativeFee: %d\n",estimate);
     return estimate;
 }
 
@@ -843,7 +844,11 @@ CFeeRate CBlockPolicyEstimator::estimateSmartFee(int confTarget, FeeCalculation 
     }
     if (feeCalc) feeCalc->returnedTarget = confTarget;
 
-    if (confTarget <= 1) return CFeeRate(0); // error condition
+
+    if (confTarget <= 1) {
+      LogPrintf("confTarget <=1 \n");
+      return CFeeRate(0); // error condition
+    }
 
     assert(confTarget > 0); //estimateCombinedFee and estimateConservativeFee take unsigned ints
     /** true is passed to estimateCombined fee for target/2 and target so
@@ -890,7 +895,10 @@ CFeeRate CBlockPolicyEstimator::estimateSmartFee(int confTarget, FeeCalculation 
         }
     }
 
-    if (median < 0) return CFeeRate(0); // error condition
+    if (median < 0){
+      LogPrintf("median < 0 \n");
+      return CFeeRate(0); // error condition
+    }
 
     return CFeeRate(llround(median));
 }
