@@ -74,7 +74,7 @@ class CMainParams : public CChainParams {
 public:
     CMainParams() {
         strNetworkID = "main";
-        consensus.nSubsidyHalvingInterval = 4995152;
+        consensus.nSubsidyHalvingInterval = 909117;
         consensus.BIP16Exception = uint256();
         consensus.BIP34Height = 0;
         consensus.BIP34Hash = uint256();
@@ -82,11 +82,11 @@ public:
         consensus.BIP66Height = 0;
         consensus.powLimit = uint256S("00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 14 * 24 * 60 * 60; // two weeks
-        consensus.nPowTargetSpacing = 10 * 60;
+        consensus.nPowTargetSpacing =  60;
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
-        consensus.nRuleChangeActivationThreshold = 1916; // 95% of 2016
-        consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
+        consensus.nRuleChangeActivationThreshold = 19152; // 95% of 2016
+        consensus.nMinerConfirmationWindow = 20160; // nPowTargetTimespan / nPowTargetSpacing
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
@@ -128,12 +128,12 @@ public:
         nDefaultPort = 8333;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1570921863, 2871061936, 0x1d00ffff, 1, 10 * COIN);
+        genesis = CreateGenesisBlock(1571020337, 1888959810, 0x1d00ffff, 1, 5000000 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         LogPrintf("blockhash: %s",consensus.hashGenesisBlock.GetHex());
         LogPrintf("hashMerkleRoot: %s",genesis.hashMerkleRoot.GetHex());
-        assert(consensus.hashGenesisBlock == uint256S("000000008592f80ace933c205d52789cbcf005509fbe0dad8fded3f79efd8b95"));
-        assert(genesis.hashMerkleRoot == uint256S("6f8747cda32a6fd908e40d225b64b29e254b7c2a0f3beed231c1b5954b8b2904"));
+        assert(consensus.hashGenesisBlock == uint256S("00000000f3223a1381f8417f55518cb91c46a116cf5a080e194bcc3923a898e8"));
+        assert(genesis.hashMerkleRoot == uint256S("cc00248de6ffa30c2dda9897ae4190e24855fd832445d51c60b2e92599c6a011"));
         // Note that of those which support the service bits prefix, most only support a subset of
         // possible options.
         // This is fine at runtime as we'll fall back to using them as a oneshot if they don't support the
@@ -201,7 +201,7 @@ class CTestNetParams : public CChainParams {
 public:
     CTestNetParams() {
         strNetworkID = "test";
-        consensus.nSubsidyHalvingInterval = 4995152;
+        consensus.nSubsidyHalvingInterval = 909117;
         consensus.BIP16Exception = uint256();
         consensus.BIP34Height = 0;
         consensus.BIP34Hash = uint256();
@@ -209,11 +209,11 @@ public:
         consensus.BIP66Height = 0;
         consensus.powLimit = uint256S("00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 14 * 24 * 60 * 60; // two weeks
-        consensus.nPowTargetSpacing = 10 * 60;
-        consensus.fPowAllowMinDifficultyBlocks = true;
+        consensus.nPowTargetSpacing =  60;
+        consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
-        consensus.nRuleChangeActivationThreshold = 1512; // 75% for testchains
-        consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
+        consensus.nRuleChangeActivationThreshold = 19152; // 95% of 2016
+        consensus.nMinerConfirmationWindow = 20160; // nPowTargetTimespan / nPowTargetSpacing
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
@@ -249,12 +249,12 @@ public:
         nDefaultPort = 18333;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1570921863, 2871061936, 0x1d00ffff, 1, 10 * COIN);
+        genesis = CreateGenesisBlock(1571020337, 1888959810, 0x1d00ffff, 1, 5000000 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         LogPrintf("blockhash: %s",consensus.hashGenesisBlock.GetHex());
         LogPrintf("hashMerkleRoot: %s",genesis.hashMerkleRoot.GetHex());
-        assert(consensus.hashGenesisBlock == uint256S("000000008592f80ace933c205d52789cbcf005509fbe0dad8fded3f79efd8b95"));
-        assert(genesis.hashMerkleRoot == uint256S("6f8747cda32a6fd908e40d225b64b29e254b7c2a0f3beed231c1b5954b8b2904"));
+        assert(consensus.hashGenesisBlock == uint256S("00000000f3223a1381f8417f55518cb91c46a116cf5a080e194bcc3923a898e8"));
+        assert(genesis.hashMerkleRoot == uint256S("cc00248de6ffa30c2dda9897ae4190e24855fd832445d51c60b2e92599c6a011"));
         vFixedSeeds.clear();
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
@@ -327,7 +327,7 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = Consensus::BIP9Deployment::NO_TIMEOUT;
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x00");
+        consensus.nMinimumChainWork = uint256S("0000000000000000000000000000000000000000000000000000000100010001");
 
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x00");
@@ -346,12 +346,12 @@ public:
         nDefaultPort = 18444;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1570921863, 2871061936, 0x1d00ffff, 1, 10 * COIN);
+        genesis = CreateGenesisBlock(1571020337, 1888959810, 0x1d00ffff, 1, 5000000 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         LogPrintf("blockhash: %s",consensus.hashGenesisBlock.GetHex());
         LogPrintf("hashMerkleRoot: %s",genesis.hashMerkleRoot.GetHex());
-        assert(consensus.hashGenesisBlock == uint256S("000000008592f80ace933c205d52789cbcf005509fbe0dad8fded3f79efd8b95"));
-        assert(genesis.hashMerkleRoot == uint256S("6f8747cda32a6fd908e40d225b64b29e254b7c2a0f3beed231c1b5954b8b2904"));
+        assert(consensus.hashGenesisBlock == uint256S("00000000f3223a1381f8417f55518cb91c46a116cf5a080e194bcc3923a898e8"));
+        assert(genesis.hashMerkleRoot == uint256S("cc00248de6ffa30c2dda9897ae4190e24855fd832445d51c60b2e92599c6a011"));
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();      //!< Regtest mode doesn't have any DNS seeds.
 
