@@ -245,6 +245,15 @@ double TxConfirmStats::EstimateMedianVal(int confTarget, double sufficientTxVal,
                                          double successBreakPoint, bool requireGreater,
                                          unsigned int nBlockHeight, EstimationResult *result) const
 {
+LogPrintf("confTarget: %d \n",confTarget);
+LogPrintf("sufficientTxVal: %d \n",sufficientTxVal);
+
+LogPrintf("successBreakPoint: %d \n",successBreakPoint);
+
+LogPrintf("requireGreater: %d \n",requireGreater);
+
+LogPrintf("nBlockHeight: %d \n",nBlockHeight);
+
     // Counters for a bucket (or range of buckets)
     double nConf = 0; // Number of tx's confirmed within the confTarget
     double totalNum = 0; // Total number of tx's that were ever confirmed
@@ -797,16 +806,22 @@ double CBlockPolicyEstimator::estimateConservativeFee(unsigned int doubleTarget,
 {
     double estimate = -1;
     EstimationResult tempResult;
+
     if (doubleTarget <= shortStats->GetMaxConfirms()) {
         estimate = feeStats->EstimateMedianVal(doubleTarget, SUFFICIENT_FEETXS, DOUBLE_SUCCESS_PCT, true, nBestSeenHeight, result);
+        LogPrintf("short Start estimate: %d\n",estimate);
     }
     if (doubleTarget <= feeStats->GetMaxConfirms()) {
         double longEstimate = longStats->EstimateMedianVal(doubleTarget, SUFFICIENT_FEETXS, DOUBLE_SUCCESS_PCT, true, nBestSeenHeight, &tempResult);
+        LogPrintf("short Start estimate: %d\n",longEstimate);
         if (longEstimate > estimate) {
             estimate = longEstimate;
             if (result) *result = tempResult;
         }
     }
+    LogPrintf("shortStats: %d\n",shortStats->GetMaxConfirms());
+    LogPrintf("feeStats: %d\n",feeStats->GetMaxConfirms());
+    LogPrintf("doubleTarget: %d\n",doubleTarget);
     LogPrintf("estimateConservativeFee: %d\n",estimate);
     return estimate;
 }
@@ -846,7 +861,7 @@ CFeeRate CBlockPolicyEstimator::estimateSmartFee(int confTarget, FeeCalculation 
 
 
     if (confTarget <= 1) {
-      LogPrintf("confTarget <=1 \n");
+      LogPrintf("confTarget <=1 %d\n",confTarget);
       return CFeeRate(0); // error condition
     }
 

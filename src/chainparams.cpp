@@ -48,8 +48,8 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "Vakaxa Dev";
-    const CScript genesisOutputScript = CScript() << ParseHex("04b0ae26e595cfdb1265f40b2d77eb5b06ed338cd9000a4feabf573cfa6d83ca9f425ae0001e8cd1c19eb36804c5422b14e6ff5f23e2cc5317a6327ffa7f302c55") << OP_CHECKSIG;
+    const char* pszTimestamp = "The Times 10/17/2019 Nilabit";
+    const CScript genesisOutputScript = CScript() << ParseHex("04954f44205d6b0cd38c84dad96c9a2d5f42a74313d9b6d9009fe2fe91c339f5a7c07ed52992078a5e5214c79e5c8a3518a6dfbfb20811d76553d8ab86f1f840c8") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
 
@@ -82,11 +82,11 @@ public:
         consensus.BIP66Height = 0;
         consensus.powLimit = uint256S("00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 14 * 24 * 60 * 60; // two weeks
-        consensus.nPowTargetSpacing =  60;
+        consensus.nPowTargetSpacing =  10 * 60;
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
-        consensus.nRuleChangeActivationThreshold = 19152; // 95% of 2016
-        consensus.nMinerConfirmationWindow = 20160; // nPowTargetTimespan / nPowTargetSpacing
+        consensus.nRuleChangeActivationThreshold = 1916; // 95% of 2016
+        consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
@@ -128,12 +128,12 @@ public:
         nDefaultPort = 8333;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1571020337, 1888959810, 0x1d00ffff, 1, 5000000 * COIN);
+        genesis = CreateGenesisBlock(1571289704, 2348344301, 0x1d00ffff, 1, 5000000 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         LogPrintf("blockhash: %s",consensus.hashGenesisBlock.GetHex());
         LogPrintf("hashMerkleRoot: %s",genesis.hashMerkleRoot.GetHex());
-        assert(consensus.hashGenesisBlock == uint256S("00000000f3223a1381f8417f55518cb91c46a116cf5a080e194bcc3923a898e8"));
-        assert(genesis.hashMerkleRoot == uint256S("cc00248de6ffa30c2dda9897ae4190e24855fd832445d51c60b2e92599c6a011"));
+        assert(consensus.hashGenesisBlock == uint256S("00000000ace4cc1743207f0ef44b39a3f22696af3a756d41f6c3d6a646f5efb0"));
+        assert(genesis.hashMerkleRoot == uint256S("85387691b477d365ee67466a8c19ffc1244d057a8a999d0c437e1558e16d3b37"));
         // Note that of those which support the service bits prefix, most only support a subset of
         // possible options.
         // This is fine at runtime as we'll fall back to using them as a oneshot if they don't support the
@@ -209,11 +209,11 @@ public:
         consensus.BIP66Height = 0;
         consensus.powLimit = uint256S("00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 14 * 24 * 60 * 60; // two weeks
-        consensus.nPowTargetSpacing =  60;
+        consensus.nPowTargetSpacing =  10 * 60;
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
-        consensus.nRuleChangeActivationThreshold = 19152; // 95% of 2016
-        consensus.nMinerConfirmationWindow = 20160; // nPowTargetTimespan / nPowTargetSpacing
+        consensus.nRuleChangeActivationThreshold = 1916; // 95% of 2016
+        consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
@@ -249,12 +249,12 @@ public:
         nDefaultPort = 18333;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1571020337, 1888959810, 0x1d00ffff, 1, 5000000 * COIN);
+        genesis = CreateGenesisBlock(1571289704, 2348344301, 0x1d00ffff, 1, 5000000 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         LogPrintf("blockhash: %s",consensus.hashGenesisBlock.GetHex());
         LogPrintf("hashMerkleRoot: %s",genesis.hashMerkleRoot.GetHex());
-        assert(consensus.hashGenesisBlock == uint256S("00000000f3223a1381f8417f55518cb91c46a116cf5a080e194bcc3923a898e8"));
-        assert(genesis.hashMerkleRoot == uint256S("cc00248de6ffa30c2dda9897ae4190e24855fd832445d51c60b2e92599c6a011"));
+        assert(consensus.hashGenesisBlock == uint256S("00000000ace4cc1743207f0ef44b39a3f22696af3a756d41f6c3d6a646f5efb0"));
+        assert(genesis.hashMerkleRoot == uint256S("85387691b477d365ee67466a8c19ffc1244d057a8a999d0c437e1558e16d3b37"));
         vFixedSeeds.clear();
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
@@ -346,12 +346,12 @@ public:
         nDefaultPort = 18444;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1571020337, 1888959810, 0x1d00ffff, 1, 5000000 * COIN);
+        genesis = CreateGenesisBlock(1571289704, 2348344301, 0x1d00ffff, 1, 5000000 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         LogPrintf("blockhash: %s",consensus.hashGenesisBlock.GetHex());
         LogPrintf("hashMerkleRoot: %s",genesis.hashMerkleRoot.GetHex());
-        assert(consensus.hashGenesisBlock == uint256S("00000000f3223a1381f8417f55518cb91c46a116cf5a080e194bcc3923a898e8"));
-        assert(genesis.hashMerkleRoot == uint256S("cc00248de6ffa30c2dda9897ae4190e24855fd832445d51c60b2e92599c6a011"));
+        assert(consensus.hashGenesisBlock == uint256S("00000000ace4cc1743207f0ef44b39a3f22696af3a756d41f6c3d6a646f5efb0"));
+        assert(genesis.hashMerkleRoot == uint256S("85387691b477d365ee67466a8c19ffc1244d057a8a999d0c437e1558e16d3b37"));
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();      //!< Regtest mode doesn't have any DNS seeds.
 
