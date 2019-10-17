@@ -745,7 +745,10 @@ unsigned int CBlockPolicyEstimator::BlockSpan() const
 
 unsigned int CBlockPolicyEstimator::HistoricalBlockSpan() const
 {
-    if (historicalFirst == 0) return 0;
+    if (historicalFirst == 0) {
+      LogPrintf("historicalFirst zero \n");
+      return 0;
+    }
     assert(historicalBest >= historicalFirst);
 
     if (nBestSeenHeight - historicalBest > OLDEST_ESTIMATE_HISTORY) return 0;
@@ -756,6 +759,10 @@ unsigned int CBlockPolicyEstimator::HistoricalBlockSpan() const
 unsigned int CBlockPolicyEstimator::MaxUsableEstimate() const
 {
     // Block spans are divided by 2 to make sure there are enough potential failing data points for the estimate
+    LogPrintf("Max Confirm: %d\n",longStats->GetMaxConfirms());
+    LogPrintf("BlockSpan: %d\n",BlockSpan());
+    LogPrintf("HistoricalBlockSpan: %d\n",HistoricalBlockSpan());
+    //LogPrintf("Max Confirm: %d",);
     return std::min(longStats->GetMaxConfirms(), std::max(BlockSpan(), HistoricalBlockSpan()) / 2);
 }
 
@@ -841,6 +848,8 @@ CFeeRate CBlockPolicyEstimator::estimateSmartFee(int confTarget, FeeCalculation 
         feeCalc->desiredTarget = confTarget;
         feeCalc->returnedTarget = confTarget;
     }
+    LogPrintf("confTarget Value:  %d\n",confTarget);
+
 
     double median = -1;
     EstimationResult tempResult;
